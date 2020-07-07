@@ -6,6 +6,9 @@
 # 3. Modify the metadata object with the new values.
 # 4. Update the metadata object in the Gateway.
 
+# Libs for Setup
+import os
+
 # Libs for Step 1
 import requests
 import json
@@ -24,19 +27,19 @@ requests.packages.urllib3.disable_warnings() # pylint: disable=no-member
 # Libs for Step 3
 from datetime import datetime, timedelta, timezone
 
-DeploymentMode = 'Dev' # Change to Prod when ready
+DeploymentMode  = os.environ.get('HS_DEPLOYMENT_MODE') # Change to Prod when ready, pull from environment
 
 # Constants for Step 1. Get ID and Secret from https://www.hydroshare.org/o/applications/
-HSClientID      = ('dev_id_here' if DeploymentMode == 'Dev' else 'prod_id_here')
-HSClientSecret  = ('dev_secret_here' if DeploymentMode == 'Dev' else 'prod_secret_here')
-HSClientUser    = ('dev_user_here' if DeploymentMode == 'Dev' else 'prod_user_here')
-HSClientPass    = ('dev_pass_here' if DeploymentMode == 'Dev' else 'prod_pass_here')
+HSClientID      = os.environ.get('HS_CLIENT_ID')
+HSClientSecret  = os.environ.get('HS_CLIENT_SECRET')
+HSClientUser    = os.environ.get('HS_CLIENT_USER')
+HSClientPass    = os.environ.get('HS_CLIENT_PASS')
 HSAccessURL     = 'https://www.hydroshare.org/o/token/'
 
 # Constants for Step 2. Get Token from Subscriptions portion of API Store
 IkeServer      = ('agaveauth' if DeploymentMode == 'Dev' else 'ikeauth')
 IkeMetaURL     = 'https://'+IkeServer+'.its.hawaii.edu/meta/v2/data/'
-IkeToken       = ('' if DeploymentMode == 'Dev' else 'prod_token_here')
+IkeToken       = os.environ.get('IKE_TOKEN')
 IkeHSTokenUUID = ('4550274236533370390-242ac1110-0001-012' if DeploymentMode == 'Dev' else '295018900705120746-242ac1110-0001-012')
 
 
