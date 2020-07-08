@@ -118,4 +118,9 @@ ResultOfMetaUpdate = updateMetadata(IkeToken=IkeToken, IkeHSTokenUUID=IkeHSToken
 UpdatedHSTokenMeta = getMetadata(IkeToken=IkeToken, IkeMetaURL=IkeMetaURL, IkeHSTokenUUID=IkeHSTokenUUID)
 if DeploymentMode == 'Dev':
     print("Post-Update: token: " + UpdatedHSTokenMeta['value']['access_token'] + " | expiration: " + UpdatedHSTokenMeta['value']['expiration_date'])
+
+if UpdatedHSTokenMeta['value']['access_token'] == IkeHSTokenMeta['value']['access_token']:
+    exit(1)
+else:
+    exit(0)
 ## End Procedure ##

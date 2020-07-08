@@ -1,3 +1,13 @@
-web:
-    env_file:
-        - hs_env_vars.env
+version: '2'
+services:
+  app:
+    container_name: hydroshare_token
+    image: mdodgehawaii/hydroshare_token:latest
+    environment:
+      - HS_DEPLOYMENT_MODE=Dev
+      - HS_CLIENT_ID=place_id_here
+      - HS_CLIENT_SECRET=place_secret_here
+      - HS_CLIENT_USER=place_user_here
+      - HS_CLIENT_PASS=place_pass_here
+      - IKE_TOKEN=place_token_here
+    command: python3 RefreshHydroShareToken.py
