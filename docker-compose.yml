@@ -5,9 +5,9 @@ services:
     image: mdodgehawaii/hydroshare_token:latest
     environment:
       - HS_DEPLOYMENT_MODE=Dev
-      - HS_CLIENT_ID=place_id_here
-      - HS_CLIENT_SECRET=place_secret_here
-      - HS_CLIENT_USER=place_user_here
-      - HS_CLIENT_PASS=place_pass_here
-      - IKE_TOKEN=place_token_here
+      - HS_CLIENT_ID=
+      - HS_CLIENT_SECRET=
+      - HS_CLIENT_USER=
+      - HS_CLIENT_PASS=
+      - IKE_TOKEN=
     command: python3 RefreshHydroShareToken.py

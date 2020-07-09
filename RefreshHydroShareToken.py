@@ -109,18 +109,13 @@ if DeploymentMode == 'Dev':
     print("Pre-Update:  token: " + IkeHSTokenMeta['value']['access_token'] + " | expiration: " + IkeHSTokenMeta['value']['expiration_date'])
 
 # 3. Modify the metadata object in memory.
-IkeHSTokenMeta = modifyMetadata(IkeHSTokenMeta=IkeHSTokenMeta, NewHSToken=NewHSToken)
+NewIkeHSTokenMeta = modifyMetadata(IkeHSTokenMeta=IkeHSTokenMeta, NewHSToken=NewHSToken)
 
 # 4. Update the metadata object in the Gateway.
-ResultOfMetaUpdate = updateMetadata(IkeToken=IkeToken, IkeHSTokenUUID=IkeHSTokenUUID, IkeHSTokenMeta=IkeHSTokenMeta)
+ResultOfMetaUpdate = updateMetadata(IkeToken=IkeToken, IkeHSTokenUUID=IkeHSTokenUUID, IkeHSTokenMeta=NewIkeHSTokenMeta)
 
 # 5. (optional) Confirm that the object now matches the new token.
 UpdatedHSTokenMeta = getMetadata(IkeToken=IkeToken, IkeMetaURL=IkeMetaURL, IkeHSTokenUUID=IkeHSTokenUUID)
 if DeploymentMode == 'Dev':
     print("Post-Update: token: " + UpdatedHSTokenMeta['value']['access_token'] + " | expiration: " + UpdatedHSTokenMeta['value']['expiration_date'])
-
-if UpdatedHSTokenMeta['value']['access_token'] == IkeHSTokenMeta['value']['access_token']:
-    exit(1)
-else:
-    exit(0)
 ## End Procedure ##
