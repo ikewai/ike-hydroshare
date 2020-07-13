@@ -8,10 +8,10 @@ WORKDIR /usr/src/app
 #RUN zypper install -y python3 python3-pip
 
 # for ubuntu version
-RUN apt update
+RUN apt -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update 
 RUN apt install python3 python3-pip -y
 
-RUN pip install hs_restclient
+RUN pip3 install hs_restclient
 
 COPY RefreshHydroShareToken.py .
 
