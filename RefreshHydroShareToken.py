@@ -38,6 +38,7 @@ HSAccessURL     = 'https://www.hydroshare.org/o/token/'
 
 # Constants for Step 2. Get Token from Subscriptions portion of API Store
 IkeServer      = ('agaveauth' if DeploymentMode == 'Dev' else 'ikeauth')
+print(IkeServer)
 IkeMetaURL     = 'https://'+IkeServer+'.its.hawaii.edu/meta/v2/data/'
 IkeToken       = os.environ.get('IKE_TOKEN')
 IkeHSTokenUUID = ('4550274236533370390-242ac1110-0001-012' if DeploymentMode == 'Dev' else '295018900705120746-242ac1110-0001-012')

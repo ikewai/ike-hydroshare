@@ -4,7 +4,7 @@ services:
     container_name: hydroshare_token
     image: mdodgehawaii/hydroshare_token:latest
     environment:
-      - HS_DEPLOYMENT_MODE=Dev
+      - HS_DEPLOYMENT_MODE=Prod
       - HS_CLIENT_ID=
       - HS_CLIENT_SECRET=
       - HS_CLIENT_USER=
